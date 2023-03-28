@@ -5,8 +5,9 @@ import com.priyasindkar.jetpackcomposehilt.data.NamesDao
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
+import javax.inject.Singleton
 
-@ViewModelScoped
+@Singleton
 class NamesRepositoryImpl @Inject constructor(private val namesDao: NamesDao) : NamesRepository {
 
     override fun addName(name: String) {

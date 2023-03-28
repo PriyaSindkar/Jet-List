@@ -13,19 +13,21 @@ import dagger.hilt.android.qualifiers.ActivityContext
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ActivityScoped
 import dagger.hilt.android.scopes.ViewModelScoped
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-@InstallIn(ViewModelComponent::class)
+@InstallIn(SingletonComponent::class)
 @Module
 object DatabaseModule {
 
     @Provides
+    @Singleton
     fun provideNamesDao(appDatabase: AppDatabase): NamesDao {
         return appDatabase.namesDao()
     }
 
     @Provides
-    @ViewModelScoped
+    @Singleton
     fun provideAppDatabase(@ApplicationContext appContext: Context): AppDatabase {
         return Room.databaseBuilder(
             appContext,

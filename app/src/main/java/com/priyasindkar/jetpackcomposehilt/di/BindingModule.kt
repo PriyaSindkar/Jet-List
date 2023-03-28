@@ -12,10 +12,11 @@ import dagger.hilt.components.SingletonComponent
 import javax.inject.Qualifier
 import javax.inject.Singleton
 
-@InstallIn(ViewModelComponent::class)
+@InstallIn(SingletonComponent::class)
 @Module
 abstract class BindingModule {
 
+    @Singleton
     @Binds
     abstract fun bindRepository(impl: NamesRepositoryImpl) : NamesRepository
 }
